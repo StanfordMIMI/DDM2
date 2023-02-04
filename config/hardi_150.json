@@ -1,0 +1,138 @@
+ {
+    "name": "hardi150",
+    "phase": "train", // train or val
+    "gpu_ids": [
+        0
+    ],
+    "path": { //set the path
+        "log": "logs",
+        "tb_logger": "tb_logger",
+        "results": "results",
+        "checkpoint": "checkpoint",
+        "resume_state": null //"/home/users/tiangex/MRI_denoise/experiments/hardi150_220515_194722/checkpoint/latest"
+    },
+    "datasets": {
+        "train": {
+            "name": "hardi",
+            "dataroot": "/home/users/tiangex/data",
+            "valid_mask": [10,160],
+            "phase": "train",
+            "padding": 3,
+            "val_volume_idx": 40,
+            "val_slice_idx": 40,
+            "train_volume_idx":2,
+            "batch_size": 32,
+            "in_channel": 1,
+            "num_workers": 0,
+            "use_shuffle": true
+        },
+        "val": {
+            "name": "hardi",
+            "dataroot": "/home/users/tiangex/data",
+            "valid_mask": [10,160],
+            "phase": "val",
+            "padding": 3,
+            "val_volume_idx": 40,
+            "val_slice_idx": 40,
+            "train_volume_idx":2, // 0 1 2
+            "batch_size": 1,
+            "in_channel": 1,
+            "num_workers": 0
+        }
+    },
+    "model": {
+        "which_model_G": "mri", // use the ddpm or sr3 network structure
+        "finetune_norm": false,
+        "drop_rate": 0.0,
+        "unet": {
+            "in_channel": 1,
+            "out_channel": 1,
+            "inner_channel": 32,
+            "norm_groups": 32,
+            "channel_multiplier": [
+                1,
+                2,
+                4,
+                8,
+                8
+            ],
+            "attn_res": [
+                16
+            ],
+            "res_blocks": 2,
+            "dropout": 0.0,
+            "version": "v1"
+        },
+        "beta_schedule": { // use munual beta_schedule for acceleration
+            "train": {
+                "schedule": "rev_warmup70",
+                "n_timestep": 1000,
+                "linear_start": 5e-5,
+                "linear_end": 1e-2
+            },
+            "val": {
+                "schedule": "rev_warmup70",
+                "n_timestep": 1000,
+                "linear_start": 5e-5,
+                "linear_end": 1e-2
+            }
+        },
+        "diffusion": {
+            "image_size": 128,
+            "channels": 3, //sample channel
+            "conditional": true // unconditional generation or unconditional generation(super_resolution)
+        }
+    },
+    "train": {
+        "n_iter": 100000, //150000,
+        "val_freq": 1e3,
+        "save_checkpoint_freq": 1e4,
+        "print_freq": 1e2,
+        "optimizer": {
+            "type": "adam",
+            "lr": 1e-4
+        },
+        "ema_scheduler": { // not used now
+            "step_start_ema": 5000,
+            "update_ema_every": 1,
+            "ema_decay": 0.9999
+        }
+    },
+    // for Phase1
+    "noise_model": {
+        "resume_state": null, //"/home/users/tiangex/MRI_denoise/experiments/hardi150_noisemodel/checkpoint/latest",
+        "drop_rate": 0.0,
+        "unet": {
+            "in_channel": 2,
+            "out_channel": 1,
+            "inner_channel": 32,
+            "norm_groups": 32,
+            "channel_multiplier": [
+                1,
+                2,
+                4,
+                8,
+                8
+            ],
+            "attn_res": [
+                16
+            ],
+            "res_blocks": 2,
+            "dropout": 0.0,
+            "version": "v1"
+        },
+        "beta_schedule": { // use munual beta_schedule for accelerationß
+            "linear_start": 5e-5,
+            "linear_end": 1e-2
+        },
+        "n_iter": 10000,
+        "val_freq": 2e3,
+        "save_checkpoint_freq": 1e4,
+        "print_freq": 1e3,
+        "optimizer": {
+            "type": "adam",
+            "lr": 1e-4
+        }
+    },
+    "stage2_file": null
+}
