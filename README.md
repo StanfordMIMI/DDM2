@@ -1,5 +1,11 @@
 # DDM<sup>2</sup>: Self-Supervised Diffusion MRI Denoising with Generative Diffusion Models, ICLR 2023
 
+Paper: https://arxiv.org/pdf/2302.03018.pdf
+
+![framework](./assets/framework.png)
+
+![result](./assets/gslider_0.gif)
+
 ## Dependencies
 
 Please clone our environment using the following command:
