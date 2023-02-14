@@ -34,7 +34,7 @@ We have provided default training configurations for reproducing our experiments
 
 ### Train
 
-The training of DDM$^2$ contains three sequential stages. For each stage, a corresponding config file need to be passed as a coommand line flag.
+The training of DDM<sup>2</sup> contains three sequential stages. For each stage, a corresponding config file need to be passed as a coommand line flag.
 
 1. To train our Stage I:  
 ```python3 train_noise_model.py -p train -c config/hardi.json```  
@@ -73,11 +73,9 @@ The ```--save``` flag can be used to save the denoised reusults into a single '.
 If you find this repo useful in your work or research, please cite:  
 
 ```
-@InProceedings{DDM2_ICLR_2023,
-    author    = {Xiang, Tiange and Yurt, Mahmut and Syed, Ali B and Setsompop, Kawin and Chaudhari, Akshay},
-    title     = {DDM2: Self-Supervised Diffusion MRI Denoising with Generative Diffusion Models},
-    booktitle = {Proceedings of the International Conference on Learning Representations (ICLR)},
-    month     = {May},
-    year      = {2023}
+@inproceedings{xiangddm,
+  title={DDM $\^{} 2$: Self-Supervised Diffusion MRI Denoising with Generative Diffusion Models},
+  author={Xiang, Tiange and Yurt, Mahmut and Syed, Ali B and Setsompop, Kawin and Chaudhari, Akshay},
+  booktitle={International Conference on Learning Representations}
 }
 ```
