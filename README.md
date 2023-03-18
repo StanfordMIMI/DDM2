@@ -76,6 +76,6 @@ If you find this repo useful in your work or research, please cite:
 @inproceedings{xiangddm,
   title={DDM $\^{} 2$: Self-Supervised Diffusion MRI Denoising with Generative Diffusion Models},
   author={Xiang, Tiange and Yurt, Mahmut and Syed, Ali B and Setsompop, Kawin and Chaudhari, Akshay},
-  booktitle={International Conference on Learning Representations}
+  booktitle={The Eleventh International Conference on Learning Representations}
 }
 ```
