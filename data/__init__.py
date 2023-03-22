@@ -24,43 +24,7 @@ def create_dataloader(dataset, dataset_opt, phase):
 def create_dataset(dataset_opt, phase, stage2_file=None):
     '''create dataset'''
 
-    # MRI
-    # from data.multishell_dataset import MS_image as MS
-    # from data.singleshell_dataset import SS_image as SS
-    # from data.dicom_dataset import DC_image as DC
-    
-
-
-    # if dataset_opt['name'] == 's3sh':
-    #     dataset = MS(dataroot=dataset_opt['dataroot'],phase=dataset_opt['phase'],
-    #                 val_volume_idx=dataset_opt['val_volume_idx'],
-    #                 val_slice_idx=dataset_opt['val_slice_idx'],
-    #                 padding=dataset_opt['padding'],
-    #                 image_size=128,
-    #                 train_volume_idx=dataset_opt['train_volume_idx'],
-    #                 partition_size=dataset_opt['partition_size'],
-    #                 initial_stage_file=dataset_opt['initial_stage_file']
-    #                 )
-    # elif dataset_opt['name'] == 'dicom':
-    #     dataset = DC(dataroot=dataset_opt['dataroot'],
-    #                 phase=dataset_opt['phase'],
-    #                 val_volume_idx=dataset_opt['val_volume_idx'],
-    #                 val_slice_idx=dataset_opt['val_slice_idx'],
-    #                 padding=dataset_opt['padding'],
-    #                 initial_stage_file=dataset_opt['initial_stage_file']
-    #                 )
-    # else:
-    #     dataset = SS(dataroot=dataset_opt['dataroot'],
-    #                 dataset=dataset_opt['name'],
-    #                 phase=dataset_opt['phase'],
-    #                 val_volume_idx=dataset_opt['val_volume_idx'],
-    #                 val_slice_idx=dataset_opt['val_slice_idx'],
-    #                 padding=dataset_opt['padding'],
-    #                 image_size=dataset_opt['image_size'] if 'image_size' in dataset_opt else None,
-    #                 initial_stage_file=dataset_opt['initial_stage_file']
-    #                 )
-
-    # unified
+    # unified data loader
     from data.mri_dataset import MRIDataset
 
     dataset = MRIDataset(dataroot=dataset_opt['dataroot'],

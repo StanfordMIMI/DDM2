@@ -63,7 +63,6 @@ for phase, dataset_opt in opt['datasets'].items():
     elif phase == 'val':
         dataset_opt['val_volume_idx'] = 'all'
         dataset_opt['val_slice_idx'] = 'all'
-        volume_stage = dataset_opt['train_volume_idx']
         val_set = Data.create_dataset(dataset_opt, phase)
         val_loader = Data.create_dataloader(
             val_set, dataset_opt, phase)

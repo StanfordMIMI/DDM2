@@ -1,6 +1,6 @@
  {
     "name": "hardi150",
-    "phase": "train", // train or val
+    "phase": "train", // always set to train in the config
     "gpu_ids": [
         0
     ],
@@ -9,18 +9,17 @@
         "tb_logger": "tb_logger",
         "results": "results",
         "checkpoint": "checkpoint",
-        "resume_state": null //"/home/users/tiangex/MRI_denoise/experiments/hardi150_220515_194722/checkpoint/latest"
+        "resume_state": null // UPDATE THIS FOR RESUMING TRAINING
     },
     "datasets": {
         "train": {
             "name": "hardi",
-            "dataroot": "/home/users/tiangex/data",
+            "dataroot": null, // **UPDATE THIS TO DATA ROOT**
             "valid_mask": [10,160],
             "phase": "train",
             "padding": 3,
-            "val_volume_idx": 40,
-            "val_slice_idx": 40,
-            "train_volume_idx":2,
+            "val_volume_idx": 40, // the volume to visualize for validation
+            "val_slice_idx": 40, // the slice to visualize for validation
             "batch_size": 32,
             "in_channel": 1,
             "num_workers": 0,
@@ -28,20 +27,19 @@
         },
         "val": {
             "name": "hardi",
-            "dataroot": "/home/users/tiangex/data",
+            "dataroot": null,  // **UPDATE THIS TO DATA ROOT**
             "valid_mask": [10,160],
             "phase": "val",
             "padding": 3,
-            "val_volume_idx": 40,
-            "val_slice_idx": 40,
-            "train_volume_idx":2, // 0 1 2
+            "val_volume_idx": 40, // the volume to visualize for validation
+            "val_slice_idx": 40, // the slice to visualize for validation
             "batch_size": 1,
             "in_channel": 1,
             "num_workers": 0
         }
     },
     "model": {
-        "which_model_G": "mri", // use the ddpm or sr3 network structure
+        "which_model_G": "mri",
         "finetune_norm": false,
         "drop_rate": 0.0,
         "unet": {
@@ -80,7 +78,7 @@
         "diffusion": {
             "image_size": 128,
             "channels": 3, //sample channel
-            "conditional": true // unconditional generation or unconditional generation(super_resolution)
+            "conditional": true // not used for DDM2
         }
     },
     "train": {
@@ -100,7 +98,7 @@
     },
     // for Phase1
     "noise_model": {
-        "resume_state": null, //"/home/users/tiangex/MRI_denoise/experiments/hardi150_noisemodel/checkpoint/latest",
+        "resume_state": null, // **UPDATE THIS TO THE PATH OF PHASE1 TRAINED NOISE MODEL** e.g. ".../experiments/sb_1_noisemodel/checkpoint/latest"
         "drop_rate": 0.0,
         "unet": {
             "in_channel": 2,
@@ -134,5 +132,5 @@
             "lr": 1e-4
         }
     },
-    "stage2_file": null
+    "stage2_file": null // **UPDATE THIS TO THE PATH OF PHASE2 MATCHED FILE** 
 }

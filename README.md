@@ -30,11 +30,11 @@ data, affine = load_nifti(hardi_fname)
 
 Different experiments are controlled by configuration files, which are in ```config/```. 
 
-We have provided default training configurations for reproducing our experiments. Users are required to **change the path vairables** to their own directory/data before running any experiments.
+We have provided default training configurations for reproducing our experiments. Users are required to **change the path vairables** to their own directory/data before running any experiments. *More detailed guidances are provided as inline comments in the config files.*
 
 ### Train
 
-The training of DDM<sup>2</sup> contains three sequential stages. For each stage, a corresponding config file need to be passed as a coommand line flag.
+The training of DDM<sup>2</sup> contains three sequential stages. For each stage, a corresponding config file (or an update of the original config file) need to be passed as a coommand line arg.
 
 1. To train our Stage I:  
 ```python3 train_noise_model.py -p train -c config/hardi.json```  
