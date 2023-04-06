@@ -14,7 +14,7 @@
     "datasets": {
         "train": {
             "name": "hardi",
-            "dataroot": null, // **UPDATE THIS TO DATA ROOT**
+            "dataroot": null, // **UPDATE THIS TO THE PATH OF THE FILE** e.g. ".../data/HARDI150.nii.gz"
             "valid_mask": [10,160],
             "phase": "train",
             "padding": 3,
@@ -27,7 +27,7 @@
         },
         "val": {
             "name": "hardi",
-            "dataroot": null,  // **UPDATE THIS TO DATA ROOT**
+            "dataroot": null,  // **UPDATE THIS TO THE PATH OF THE FILE** e.g. ".../data/HARDI150.nii.gz"
             "valid_mask": [10,160],
             "phase": "val",
             "padding": 3,

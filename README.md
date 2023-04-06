@@ -37,21 +37,21 @@ We have provided default training configurations for reproducing our experiments
 The training of DDM<sup>2</sup> contains three sequential stages. For each stage, a corresponding config file (or an update of the original config file) need to be passed as a coommand line arg.
 
 1. To train our Stage I:  
-```python3 train_noise_model.py -p train -c config/hardi.json```  
+```python3 train_noise_model.py -p train -c config/hardi_150.json```  
 or alternatively, modify ```run_stage1.sh``` and run:  
 ```./run_stage1.sh```  
 
 2. After Stage I training completed, the path to the checkpoint of the noise model need to be specific at 'resume_state' of the 'noise_model' section in corresponding config file. Additionally, a file path (.txt) needs to be specified at 'initial_stage_file' in the 'noise_model' section. This file will be recorded with the matched states in Stage II.  
 
 3. To process our Stage II:  
-```python3 match_state.py -p train -c config/hardi.json```  
+```python3 match_state.py -p train -c config/hardi_150.json```  
 or alternatively, modify ```run_stage2.sh``` and run:  
 ```./run_stage2.sh```  
 
 4. After Stage II finished, the state file (recorded in the previous step) needs to be specified at 'initial_stage_file' for both 'train' and 'val' in the 'datasets' section.  
 
 5. To train our Stage III:  
-```python3 train_diff_model.py -p train -c config/hardi.json```  
+```python3 train_diff_model.py -p train -c config/hardi_150.json```  
 or alternatively, modify ```run_stage3.sh``` and run:  
 ```./run_stage3.sh```  
 

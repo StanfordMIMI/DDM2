@@ -1,4 +1,4 @@
-name: tiange
+name: ddm2
 channels:
   - pytorch
   - defaults
@@ -89,4 +89,3 @@ dependencies:
     - torchvision==0.9.0
     - tqdm==4.63.1
     - urllib3==1.26.9
-prefix: /home/groups/akshaysc/conda/miniconda3/envs/tiange
