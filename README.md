@@ -12,7 +12,7 @@ Please clone our environment using the following command:
 
 ```
 conda env create -f environment.yml  
-conda activate DDM2
+conda activate ddm2
 ```
 
 ## Usage
