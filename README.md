@@ -48,7 +48,7 @@ or alternatively, modify ```run_stage1.sh``` and run:
 or alternatively, modify ```run_stage2.sh``` and run:  
 ```./run_stage2.sh```  
 
-4. After Stage II finished, the state file (recorded in the previous step) needs to be specified at 'initial_stage_file' for both 'train' and 'val' in the 'datasets' section.  
+4. After Stage II finished, the state file (a '.txt' file, generated in the previous step) needs to be specified at **'stage2_file'** variable in the last line of each config file. This step is neccesary for the following steps and inference.
 
 5. To train our Stage III:  
 ```python3 train_diff_model.py -p train -c config/hardi_150.json```  
