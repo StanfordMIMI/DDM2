@@ -68,6 +68,13 @@ or alternatively, modify ```denoise.sh``` and run:
 The ```--save``` flag can be used to save the denoised reusults into a single '.nii.gz' file:  
 ```python denoise.py -c config/hardi.json --save```
 
+
+### Quantitative Metrics Calulation
+
+With the denoised Stanford HARDI dataset, please follow the instructions in ```quantitative_metrics.ipynb``` to calculate SNR and CNR scores.
+
+*This notebook is derived from this [DIPY script](https://dipy.org/documentation/1.1.0./examples_built/snr_in_cc/). Please respect their license of usage.*
+
 ## Citation  
 
 If you find this repo useful in your work or research, please cite:  
