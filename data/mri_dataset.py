@@ -32,7 +32,7 @@ class MRIDataset(Dataset):
         raw_data = raw_data[:,:,:,valid_mask[0]:valid_mask[1]] 
         self.data_size_before_padding = raw_data.shape
 
-        self.raw_data = np.pad(raw_data, ((0,0), (0,0), (in_channel//2, in_channel//2), (self.padding, self.padding)), mode='wrap')
+        self.raw_data = np.pad(raw_data.astype(np.float32), ((0,0), (0,0), (in_channel//2, in_channel//2), (self.padding, self.padding)), mode='wrap').astype(np.float32)
 
         # running for Stage3?
         if stage2_file is not None:
